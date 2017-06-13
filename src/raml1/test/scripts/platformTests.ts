@@ -31,7 +31,8 @@ function operate(){
     let repoDir = path.resolve(wsDir, "PlatformComparisonScript");
     console.log("git config:")
     console.log(fs.readFileSync(path.resolve(repoDir,"./.git/config"),"utf8"));
-    console.log(JSON.stringify(gitConfig.sync({ cwd: repoDir, path: '.git/config' }),null,2));
+    let cfg = gitConfig.sync({ cwd: repoDir, path: '.git/config' });
+    console.log(JSON.stringify(cfg,null,2));
     testUtils.setSSHUrl(repoDir);
     console.log("git config:");
     console.log(fs.readFileSync(path.resolve(repoDir,"./.git/config"),"utf8"));

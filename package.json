@@ -42,7 +42,7 @@
     "url": "https://github.com/raml-org/raml-js-parser-2/issues"
   },
   "devDependencies": {
-    "raml-1-parser-test-utils": "^1.0.5"
+    "raml-1-parser-test-utils": "^1.0.6"
   },
   "browser": {
     "fs": false,
