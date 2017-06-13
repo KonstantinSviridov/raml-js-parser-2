@@ -63,6 +63,10 @@ function pluginBranch(pluginName, folderOrDescriptor, rootFolder) {
     if (typeof branchName == "string") {
         return branchName;
     }
+    branchName = process.env.TRAVIS_BRANCH;
+    if (typeof branchName == "string") {
+        return branchName;
+    }
     console.log("invalid branch " + branchName);
     return null;
 }
