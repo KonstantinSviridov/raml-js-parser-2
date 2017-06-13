@@ -22,34 +22,6 @@
     "platformTests": "node dist/raml1/test/scripts/platformTests.js"
   },
   "dependencies": {
-    "base64url": "^1.0.6",
-    "change-case": "^2.3.1",
-    "concat-stream": "^1.5.1",
-    "git-branch": "^1.0.0",
-    "http-response-object": "^1.1.0",
-    "invariant": "^2.0.0",
-    "json-schema-compatibility": "^1.1.0",
-    "json-stable-stringify": "^1.0.1",
-    "loophole": "^1.1.0",
-    "lrucache": "^0.2.0",
-    "marked": "^0.3.3",
-    "media-typer": "^0.3.0",
-    "mkdirp": "^0.5.0",
-    "pluralize": "^1.2.0",
-    "promise-polyfill": "^5.1.0",
-    "q": "^1.0.0",
-    "raml-definition-system": "0.0.64",
-    "then-request": "^2.2.0",
-    "ts-model": "0.0.13",
-    "ts-structure-parser": "0.0.12",
-    "typescript-compiler": "1.4.1-2",
-    "underscore": "^1.8.3",
-    "wrench": "^1.5.8",
-    "xhr2": "^0.1.3",
-    "xmldom": "^0.1.22",
-    "xmlhttprequest": "^1.8.0",
-    "yaml-ast-parser": "0.0.33",
-    "z-schema": "^3.16.1"
   },
   "typings": "./dist/index.d.ts",
   "repository": {
@@ -69,20 +41,7 @@
     "url": "https://github.com/raml-org/raml-js-parser-2/issues"
   },
   "devDependencies": {
-    "atom-text-typer": "0.0.1",
-    "chai": "^2.2.0",
-    "chai-as-promised": "^5.2.0",
-    "dev-env-installer": "0.0.5",
-    "gulp": "^3.9.1",
-    "gulp-istanbul": "*",
-    "gulp-mocha": "^2.2.0",
-    "json-loader": "^0.5.1",
-    "mocha": "^2.2.1",
-    "raml-1-parser-test-utils": "^1.0.4",
-    "rimraf": "*",
-    "typescript": "1.8.7",
-    "typings": "^0.5.1",
-    "webpack": "1.4.2"
+    "raml-1-parser-test-utils": "^1.0.5"
   },
   "browser": {
     "fs": false,
