@@ -1,15 +1,15 @@
 "use strict";
 var testUtils = require("raml-1-parser-test-utils");
 var path = require("path");
+var fs = require("fs");
+var gitBranch = require("git-branch");
 function operate() {
     var commitId = process.env.TRAVIS_COMMIT;
     if (!commitId) {
-        //return;
+        return;
     }
     var rootDir = testUtils.rootDir(__dirname);
-    var tsBranch = testUtils.pluginBranch("raml-typesystem", rootDir);
-    console.warn("TS branch: "+ tsBranch);
-    var parserBranch = testUtils.pluginBranch("raml-1-parser", rootDir);
+    var parserBranch = pluginBranch("raml-1-parser", rootDir);
     if (!parserBranch) {
         console.warn("No parser branch has been detected");
         return;
@@ -24,5 +24,35 @@ function operate() {
     testUtils.insertDummyChanges(repoDir);
     testUtils.contributeTheStorage(repoDir, ["trigger.txt"], "TARGET_BRANCH=" + parserBranch, false);
 }
+function pluginBranch(pluginName, folderOrDescriptor, rootFolder) {
+    var descriptor = folderOrDescriptor;
+    if (fs.lstatSync(descriptor).isDirectory()) {
+        descriptor = path.resolve(descriptor, "workspace.json");
+    }
+    if (!fs.existsSync(descriptor)) {
+        return null;
+    }
+    rootFolder = rootFolder || path.dirname(descriptor);
+    var packagejsonfile = path.resolve(rootFolder, "package.json");
+    if (!fs.existsSync(packagejsonfile)) {
+        console.log("no package.json");
+        return null;
+    }
+    try {
+        var packagejson = JSON.parse(fs.readFileSync(packagejsonfile, "utf8"));
+        if (packagejson.name != pluginName) {
+            return null;
+        }
+    }
+    catch (e) {
+        console.log(e);
+        return null;
+    }
+    var branchName = gitBranch.sync(rootFolder);
+    if (typeof branchName == "string") {
+        return branchName;
+    }
+    console.log("invalid branch " + branchName);
+    return null;
+}
 operate();
-//# sourceMappingURL=platformTests.js.map
