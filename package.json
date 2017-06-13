@@ -19,7 +19,7 @@
     "buildBrowserPublishNpm": "node generateBrowserVersion.js --type 'npm'",
     "buildBrowserPublishBower": "node generateBrowserVersion.js --type 'bower'",
     "validateTCKSchema": "node dist/raml1/test/scripts/schema/schemaTCKValidator.js",
-    "platformTests": "node dist/raml1/test/scripts/platformTests.js",
+    "platformTests": "node dist/raml1/test/scripts/platformTests.js"
   },
   "dependencies": {
     "base64url": "^1.0.6",
