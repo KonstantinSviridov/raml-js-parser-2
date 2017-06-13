@@ -1,7 +1,6 @@
 "use strict";
 var testUtils = require("raml-1-parser-test-utils");
 var path = require("path");
-var gitBranch = require("git-branch");
 function operate() {
     var commitId = process.env.TRAVIS_COMMIT;
     if (!commitId) {

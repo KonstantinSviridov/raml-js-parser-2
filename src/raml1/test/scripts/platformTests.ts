@@ -1,7 +1,6 @@
 import testUtils = require("raml-1-parser-test-utils");
 import path = require("path");
 import fs = require("fs");
-var gitBranch = require("git-branch");
 
 function operate(){
 
