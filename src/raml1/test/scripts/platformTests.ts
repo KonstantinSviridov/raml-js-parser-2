@@ -60,7 +60,17 @@ function pluginBranch(pluginName:string,folderOrDescriptor:string, rootFolder?:s
         console.log(e);
         return null;
     }
-
+    console.log("rootFolder: " + rootFolder);
+    fs.readdirSync(rootFolder).forEach(x=>{
+       console.log(x);
+    });
+    let gitFolder = path.resolve(rootFolder,".git");
+    if(fs.existsSync(gitFolder)){
+        console.log("gitFolder: " + gitFolder);
+        fs.readdirSync(gitFolder).forEach(x=>{
+            console.log(x);
+        });
+    }
     let branchName = gitBranch.sync(rootFolder);
     if(typeof branchName == "string") {
         return branchName;

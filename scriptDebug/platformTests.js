@@ -9,7 +9,7 @@ function operate() {
         return;
     }
     var rootDir = testUtils.rootDir(__dirname);
-    var parserBranch = pluginBranch("raml-1-parser", rootDir);
+    var parserBranch = testUtils.pluginBranch("raml-1-parser", rootDir);
     if (!parserBranch) {
         console.warn("No parser branch has been detected");
         return;
@@ -48,6 +48,17 @@ function pluginBranch(pluginName, folderOrDescriptor, rootFolder) {
         console.log(e);
         return null;
     }
+    console.log("rootFolder: " + rootFolder);
+    fs.readdirSync(rootFolder).forEach(function (x) {
+        console.log(x);
+    });
+    var gitFolder = path.resolve(rootFolder, ".git");
+    if (fs.existsSync(gitFolder)) {
+        console.log("gitFolder: " + gitFolder);
+        fs.readdirSync(gitFolder).forEach(function (x) {
+            console.log(x);
+        });
+    }
     var branchName = gitBranch.sync(rootFolder);
     if (typeof branchName == "string") {
         return branchName;
@@ -56,3 +67,4 @@ function pluginBranch(pluginName, folderOrDescriptor, rootFolder) {
     return null;
 }
 operate();
+//# sourceMappingURL=platformTests.js.map
