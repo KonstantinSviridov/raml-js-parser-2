@@ -77,7 +77,7 @@
     "gulp-mocha": "^2.2.0",
     "json-loader": "^0.5.1",
     "mocha": "^2.2.1",
-    "raml-1-parser-test-utils": "^1.0.3",
+    "raml-1-parser-test-utils": "^1.0.4",
     "rimraf": "*",
     "typescript": "1.8.7",
     "typings": "^0.5.1",
