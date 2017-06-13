@@ -1,7 +1,5 @@
 import testUtils = require("raml-1-parser-test-utils");
 import path = require("path");
-import fs = require("fs");
-var gitConfig = require("parse-git-config");
 
 function operate(){
 
@@ -29,13 +27,7 @@ function operate(){
         {"--depth": "=1"});
 
     let repoDir = path.resolve(wsDir, "PlatformComparisonScript");
-    console.log("git config:")
-    console.log(fs.readFileSync(path.resolve(repoDir,"./.git/config"),"utf8"));
-    let cfg = gitConfig.sync({ cwd: repoDir, path: '.git/config' });
-    console.log(JSON.stringify(cfg,null,2));
     testUtils.setSSHUrl(repoDir);
-    console.log("git config:");
-    console.log(fs.readFileSync(path.resolve(repoDir,"./.git/config"),"utf8"));
     testUtils.insertDummyChanges(repoDir);
 
     testUtils.contributeTheStorage(repoDir, ["trigger.txt"], `TARGET_BRANCH=${parserBranch}`, false);
