@@ -4,10 +4,11 @@ var path = require("path");
 function operate() {
     var commitId = process.env.TRAVIS_COMMIT;
     if (!commitId) {
-        return;
+        //return;
     }
     var rootDir = testUtils.rootDir(__dirname);
-    console.log("rootDir: "+rootDir);
+    var tsBranch = testUtils.pluginBranch("raml-typesystem", rootDir);
+    console.warn("TS branch: "+ tsBranch);
     var parserBranch = testUtils.pluginBranch("raml-1-parser", rootDir);
     if (!parserBranch) {
         console.warn("No parser branch has been detected");
