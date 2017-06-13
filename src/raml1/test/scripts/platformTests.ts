@@ -21,7 +21,7 @@ function operate(){
         "https://github.com/KonstantinSviridov/PlatformComparisonScript",
         {"--depth": "=1"});
 
-    let repoDir = path.resolve(rootDir, "PlatformComparisonScript");
+    let repoDir = path.resolve(wsDir, "PlatformComparisonScript");
     testUtils.insertDummyChanges(repoDir);
 
     testUtils.contributeTheStorage(rootDir, ["trigger.txt"], `TARGET_COMMIT=${commitId}`, true);
