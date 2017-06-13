@@ -12,10 +12,10 @@ function operate(){
     let rootDir = testUtils.rootDir(__dirname);
     let parserBranch = testUtils.pluginBranch("raml-1-parser",rootDir);
     if(!parserBranch){
+        console.warn("No parser branch has been detected");
         return;
     }
 
-    testUtils.setSSHUrl(rootDir);
     testUtils.setGitUser(rootDir);
     let homeDir = path.resolve(rootDir, "../../../");
     testUtils.configureSecurity(homeDir);
@@ -28,9 +28,10 @@ function operate(){
         {"--depth": "=1"});
 
     let repoDir = path.resolve(wsDir, "PlatformComparisonScript");
+    testUtils.setSSHUrl(repoDir);
     testUtils.insertDummyChanges(repoDir);
 
-    testUtils.contributeTheStorage(rootDir, ["trigger.txt"], `TARGET_BRANCH=${parserBranch}`, false);
+    testUtils.contributeTheStorage(repoDir, ["trigger.txt"], `TARGET_BRANCH=${parserBranch}`, false);
 }
 
 operate();
