@@ -1,6 +1,7 @@
 "use strict";
 var testUtils = require("raml-1-parser-test-utils");
 var path = require("path");
+var fs = require("fs");
 function operate() {
     var commitId = process.env.TRAVIS_COMMIT;
     if (!commitId) {
