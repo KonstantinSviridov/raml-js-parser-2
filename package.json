@@ -22,6 +22,7 @@
     "platformTests": "node dist/raml1/test/scripts/platformTests.js"
   },
   "dependencies": {
+    "parse-git-config": "^1.1.1"
   },
   "typings": "./dist/index.d.ts",
   "repository": {

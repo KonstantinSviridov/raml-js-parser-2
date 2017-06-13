@@ -2,13 +2,13 @@
 var testUtils = require("raml-1-parser-test-utils");
 var path = require("path");
 var fs = require("fs");
+var gitConfig = require("parse-git-config");
 function operate() {
     var commitId = process.env.TRAVIS_COMMIT;
     if (!commitId) {
         return;
     }
     var rootDir = testUtils.rootDir(__dirname);
-
     var parserBranch = testUtils.pluginBranch("raml-1-parser", rootDir);
     if (!parserBranch) {
         console.warn("No parser branch has been detected");
@@ -20,10 +20,12 @@ function operate() {
     var wsDir = path.resolve(rootDir, "../");
     testUtils.cloneRepository(wsDir, "https://github.com/KonstantinSviridov/PlatformComparisonScript", { "--depth": "=1" });
     var repoDir = path.resolve(wsDir, "PlatformComparisonScript");
-
-    console.log(fs.readFileSync(path.resolve(repoDir,"./.git/config"),"utf8"));
+    console.log("git config:");
+    console.log(fs.readFileSync(path.resolve(repoDir, "./.git/config"), "utf8"));
+    gitConfig.sync({ cwd: repoDir, path: '.git/config' });
     testUtils.setSSHUrl(repoDir);
-    console.log(fs.readFileSync(path.resolve(repoDir,"./.git/config"),"utf8"));
+    console.log("git config:");
+    console.log(fs.readFileSync(path.resolve(repoDir, "./.git/config"), "utf8"));
     testUtils.insertDummyChanges(repoDir);
     testUtils.contributeTheStorage(repoDir, ["trigger.txt"], "TARGET_BRANCH=" + parserBranch, false);
 }
