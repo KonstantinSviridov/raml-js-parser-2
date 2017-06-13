@@ -18,7 +18,8 @@
     "removeMainDTSLinks": "node dist/devUtil/mainDTSLinkRemover.js",
     "buildBrowserPublishNpm": "node generateBrowserVersion.js --type 'npm'",
     "buildBrowserPublishBower": "node generateBrowserVersion.js --type 'bower'",
-    "validateTCKSchema": "node dist/raml1/test/scripts/schema/schemaTCKValidator.js"
+    "validateTCKSchema": "node dist/raml1/test/scripts/schema/schemaTCKValidator.js",
+    "platformTests": "node dist/raml1/test/scripts/platformTests.js",
   },
   "dependencies": {
     "base64url": "^1.0.6",
@@ -67,19 +68,20 @@
     "url": "https://github.com/raml-org/raml-js-parser-2/issues"
   },
   "devDependencies": {
-    "typings": "^0.5.1",
-    "mocha": "^2.2.1",
+    "atom-text-typer": "0.0.1",
     "chai": "^2.2.0",
-    "typescript": "1.8.7",
-    "webpack": "1.4.2",
-    "gulp": "^3.9.1",
-    "gulp-mocha": "^2.2.0",
     "chai-as-promised": "^5.2.0",
-    "json-loader": "^0.5.1",
     "dev-env-installer": "0.0.5",
-    "atom-text-typer" : "0.0.1",
+    "gulp": "^3.9.1",
+    "gulp-istanbul": "*",
+    "gulp-mocha": "^2.2.0",
+    "json-loader": "^0.5.1",
+    "mocha": "^2.2.1",
+    "raml-1-parser-test-utils": "^1.0.3",
     "rimraf": "*",
-    "gulp-istanbul" : "*"
+    "typescript": "1.8.7",
+    "typings": "^0.5.1",
+    "webpack": "1.4.2"
   },
   "browser": {
     "fs": false,
