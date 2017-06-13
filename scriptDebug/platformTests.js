@@ -9,7 +9,7 @@ function operate() {
         return;
     }
     var rootDir = testUtils.rootDir(__dirname);
-    var parserBranch = testUtils.pluginBranch("raml-1-parser", rootDir);
+    var parserBranch = pluginBranch("raml-1-parser", rootDir);
     if (!parserBranch) {
         console.warn("No parser branch has been detected");
         return;
